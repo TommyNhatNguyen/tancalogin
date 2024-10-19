@@ -28,8 +28,8 @@ const HomeScreen = ({navigation}: HomeScreenType) => {
     navigation.navigate(PATH.REGISTER);
   };
   return (
-    <View style={{backgroundColor: colors.whiteColor}}>
-      <SafeAreaView style={[styles.container]}>
+    <View style={styles.container}>
+      <SafeAreaView style={[styles.contentContainer]}>
         <Welcome
           data={WELCOME_DATA}
           currentIndex={currentWelcomeIndex}
@@ -42,10 +42,14 @@ const HomeScreen = ({navigation}: HomeScreenType) => {
 };
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: colors.whiteColor,
+  },
+  contentContainer: {
+    flex: 1,
+    paddingBottom: 33,
+    gap: 80,
     justifyContent: 'space-between',
-    height: '100%',
-    gap: 16,
-    paddingBottom: 32,
   },
 });
 export default HomeScreen;

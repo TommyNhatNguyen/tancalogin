@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps,
+  useWindowDimensions,
 } from 'react-native';
 import {colors} from '../styles/colorStyle';
 import MyAppText from './MyAppText';
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
   btn: {
     flex: 1,
     height: 53,
+    flexBasis: 53,
     maxWidth: 160,
     borderRadius: 14,
     borderWidth: 1,

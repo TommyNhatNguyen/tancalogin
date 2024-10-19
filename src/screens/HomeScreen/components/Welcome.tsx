@@ -15,17 +15,18 @@ const Welcome = ({data, currentIndex, handleScroll}: WelcomeType) => {
     handleScroll(nativeEvent);
   };
   return (
-    <View style={styles.welcomeContainter}>
-      <ScrollView
-        pagingEnabled
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainer}
-        onScroll={_onScroll}>
-        {data.map(item => {
-          return <WelcomeComponent key={item.content} {...item} />;
-        })}
-      </ScrollView>
+    <View style={styles.container}>
+      <View>
+        <ScrollView
+          pagingEnabled
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          onScroll={_onScroll}>
+          {data.map(item => {
+            return <WelcomeComponent key={item.content} {...item} />;
+          })}
+        </ScrollView>
+      </View>
       <View style={styles.dotsContainer}>
         {Array(data.length)
           .fill('')
@@ -42,16 +43,16 @@ const Welcome = ({data, currentIndex, handleScroll}: WelcomeType) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    gap: 59,
+    margin: 'auto',
+  },
   dotsContainer: {
     height: 8,
     gap: 8,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    // position: 'absolute',
-    // bottom: 110,
-    // left: '50%',
-    // transform: 'translateX(-50%)',
   },
   dot: {
     height: '100%',
@@ -61,21 +62,6 @@ const styles = StyleSheet.create({
   },
   dotActive: {
     backgroundColor: colors.mainColor,
-  },
-  container: {
-    justifyContent: 'space-between',
-    height: '100%',
-    gap: 16,
-    backgroundColor: colors.whiteColor,
-  },
-  welcomeContainter: {
-    flex: 1,
-    position: 'relative',
-  },
-  contentContainer: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    maxHeight: 'auto',
   },
 });
 

@@ -4,14 +4,12 @@ import {
   ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
-  Platform,
+  SafeAreaView,
   StyleSheet,
   TextInput,
   View,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Header from './components/Header';
-import Form from '../../components/Form';
 import MyAppText from '../../components/MyAppText';
 import {colors} from '../../styles/colorStyle';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
@@ -34,7 +32,6 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
     username: '',
     phone: '',
   });
-  const insets = useSafeAreaInsets();
   const userNameInputRef = useRef<TextInput | null>(null);
   const phoneInputRef = useRef<TextInput | null>(null);
   const handleChangeUserName = (text: string) => {
@@ -91,66 +88,57 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
       source={bgImage}
       resizeMode="cover"
       style={[styles.container]}>
-      <View
-        style={[
-          {
-            paddingTop: insets.top,
-          },
-          styles.contentContainer,
-        ]}>
-        <Header navigation={navigation} containerStyles={{flex: 1}} />
+      <View style={[styles.contentContainer]}>
+        {/* ---- HEADER TANCA LOGO ----- */}
+        <SafeAreaView style={{flex: 1}}>
+          <Header navigation={navigation} containerStyles={styles.header} />
+        </SafeAreaView>
+        {/* ---- FORM ----- */}
+        <View style={{flex: 1}}></View>
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'position' : 'height'}
-          style={{
-            flex: 1,
-            maxWidth: '100%',
-          }}>
-          <Form
-            containerStyles={{
-              flex: 1,
-              paddingBottom: insets.bottom,
-            }}>
-            <View style={formStyle.container}>
-              <MyAppText fontWeight="semibold" styles={formStyle.title}>
-                Đăng ký
-              </MyAppText>
-              <MyAppText fontWeight="regular" styles={formStyle.welcome}>
-                Hãy cho chúng tôi biết về bạn
-              </MyAppText>
-            </View>
-
-            <View style={formStyle.inputContainer}>
-              <MyInput
-                handleChange={handleChangeUserName}
-                value={formData.username}
-                placeholder="Nhập họ và tên"
-                icon={friendIcon}
-                inputMode="text"
-                ref={userNameInputRef}
-              />
-              <MyInput
-                handleChange={handleChangePhone}
-                value={formData.phone}
-                placeholder="Nhập số điện thoại"
-                inputMode="numeric"
-                keyboardType="phone-pad"
-                type="phone"
-                ref={phoneInputRef}
-              />
-            </View>
-
-            <MyTouchableOpacity
-              onPress={handleRegister}
-              style={formStyle.submitBtn}
-              variant="fill">
+          behavior={'position'}
+          contentContainerStyle={styles.formInnerContainer}
+          style={styles.formOuterContainer}>
+          <View style={formStyle.container}>
+            <MyAppText fontWeight="semibold" styles={formStyle.title}>
               Đăng ký
-            </MyTouchableOpacity>
-
-            <MyAppText styles={formStyle.textAzure} fontWeight="light">
-              Sign in with
-              <MyAppText fontWeight="medium"> Azure AD</MyAppText>
             </MyAppText>
-          </Form>
+            <MyAppText fontWeight="regular" styles={formStyle.welcome}>
+              Hãy cho chúng tôi biết về bạn
+            </MyAppText>
+          </View>
+
+          <View style={formStyle.inputContainer}>
+            <MyInput
+              handleChange={handleChangeUserName}
+              value={formData.username}
+              placeholder="Nhập họ và tên"
+              icon={friendIcon}
+              inputMode="text"
+              ref={userNameInputRef}
+            />
+            <MyInput
+              handleChange={handleChangePhone}
+              value={formData.phone}
+              placeholder="Nhập số điện thoại"
+              inputMode="numeric"
+              keyboardType="phone-pad"
+              type="phone"
+              ref={phoneInputRef}
+            />
+          </View>
+
+          <MyTouchableOpacity
+            onPress={handleRegister}
+            style={formStyle.submitBtn}
+            variant="fill">
+            Đăng ký
+          </MyTouchableOpacity>
+
+          <MyAppText styles={formStyle.textAzure} fontWeight="light">
+            Sign in with
+            <MyAppText fontWeight="medium"> Azure AD</MyAppText>
+          </MyAppText>
         </KeyboardAvoidingView>
       </View>
     </ImageBackground>
@@ -160,18 +148,32 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.mainBgColor,
-    height: '100%',
+    flex: 1,
   },
   contentContainer: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '100%',
+    flex: 1,
+    position: 'relative',
+  },
+  header: {flex: 1, marginTop: 16},
+  formOuterContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    minHeight: '50%',
+  },
+  formInnerContainer: {
+    backgroundColor: colors.whiteColor,
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15,
+    paddingHorizontal: 20,
+    paddingBottom: 33,
+    paddingTop: 34,
+    flex: 1,
   },
 });
 
 const formStyle = StyleSheet.create({
   container: {
-    marginTop: 34,
     gap: 13,
   },
   title: {
@@ -190,12 +192,12 @@ const formStyle = StyleSheet.create({
   submitBtn: {
     maxHeight: 53,
     maxWidth: 'auto',
+    marginBottom: 44,
   },
   textAzure: {
     color: colors.textColor,
     textAlign: 'center',
     fontSize: 16.45,
-    marginTop: 'auto',
   },
 });
 export default RegisterScreen;

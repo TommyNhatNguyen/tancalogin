@@ -3,14 +3,12 @@ import MyAppText from '../../components/MyAppText';
 import {
   ImageBackground,
   KeyboardAvoidingView,
-  Platform,
+  SafeAreaView,
   StyleSheet,
   View,
 } from 'react-native';
 import {colors} from '../../styles/colorStyle';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Header from '../RegisterScreen/components/Header';
-import Form from '../../components/Form';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
 const bgImage = require('../../assets/images/bg-gradient.png');
 
@@ -20,7 +18,6 @@ type ConfirmScreenType = {
 };
 
 const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
-  const insets = useSafeAreaInsets();
   const {phoneNumber} = route.params;
   console.log(phoneNumber);
   const handleConfirm = () => {};
@@ -29,46 +26,37 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
       source={bgImage}
       resizeMode="cover"
       style={[styles.container]}>
-      <View
-        style={[
-          {
-            paddingTop: insets.top,
-          },
-          styles.contentContainer,
-        ]}>
-        <Header navigation={navigation} containerStyles={{flex: 1}} />
+      <View style={[styles.contentContainer]}>
+        {/* ---- HEADER TANCA LOGO ----- */}
+        <SafeAreaView style={{flex: 1}}>
+          <Header navigation={navigation} containerStyles={styles.header} />
+        </SafeAreaView>
+        {/* ---- FORM ----- */}
+        <View style={{flex: 1}}></View>
         <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'position' : 'height'}
-          style={{
-            flex: 1,
-            maxWidth: '100%',
-          }}>
-          <Form
-            containerStyles={{
-              flex: 1,
-              paddingBottom: insets.bottom,
-            }}>
-            <View style={formStyle.container}>
-              <MyAppText fontWeight="semibold" styles={formStyle.title}>
-                Xác minh OTP
-              </MyAppText>
-              <MyAppText fontWeight="regular" styles={formStyle.welcome}>
-                Nhập mã OTP gửi đến +84336785321
-              </MyAppText>
-            </View>
-
-            <MyTouchableOpacity
-              onPress={handleConfirm}
-              style={formStyle.submitBtn}
-              variant="fill">
-              Đồng ý
-            </MyTouchableOpacity>
-
-            <MyAppText styles={formStyle.textAzure} fontWeight="light">
-              Gửi lại sau
-              <MyAppText fontWeight="medium"> (36)</MyAppText>
+          behavior={'position'}
+          contentContainerStyle={styles.formInnerContainer}
+          style={styles.formOuterContainer}>
+          <View style={formStyle.container}>
+            <MyAppText fontWeight="semibold" styles={formStyle.title}>
+              Xác minh OTP
             </MyAppText>
-          </Form>
+            <MyAppText fontWeight="regular" styles={formStyle.welcome}>
+              Nhập mã OTP gửi đến +84336785321
+            </MyAppText>
+          </View>
+
+          <MyTouchableOpacity
+            onPress={handleConfirm}
+            style={formStyle.submitBtn}
+            variant="fill">
+            Đồng ý
+          </MyTouchableOpacity>
+
+          <MyAppText styles={formStyle.textAzure} fontWeight="light">
+            Gửi lại sau
+            <MyAppText fontWeight="medium"> (36)</MyAppText>
+          </MyAppText>
         </KeyboardAvoidingView>
       </View>
     </ImageBackground>
@@ -78,18 +66,32 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.mainBgColor,
-    height: '100%',
+    flex: 1,
   },
   contentContainer: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '100%',
+    flex: 1,
+    position: 'relative',
+  },
+  header: {flex: 1, marginTop: 16},
+  formOuterContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    minHeight: '50%',
+  },
+  formInnerContainer: {
+    backgroundColor: colors.whiteColor,
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15,
+    paddingHorizontal: 20,
+    paddingBottom: 33,
+    paddingTop: 34,
+    flex: 1,
   },
 });
 
 const formStyle = StyleSheet.create({
   container: {
-    marginTop: 34,
     gap: 13,
   },
   title: {
@@ -108,12 +110,12 @@ const formStyle = StyleSheet.create({
   submitBtn: {
     maxHeight: 53,
     maxWidth: 'auto',
+    marginBottom: 44,
   },
   textAzure: {
     color: colors.textColor,
     textAlign: 'center',
     fontSize: 16.45,
-    marginTop: 'auto',
   },
 });
 
