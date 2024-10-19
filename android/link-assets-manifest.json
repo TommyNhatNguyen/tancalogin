@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Mulish-Bold.ttf",
+      "sha1": "97cb4086e384a1e2e8688985b7eb8cbbc63354cb"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Medium.ttf",
+      "sha1": "6201b3d5d10905f878860861d4e7ebcca6ca3936"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-Regular.ttf",
+      "sha1": "65aa946a76999c7fe9a6b4478e9c35db9c80b137"
+    },
+    {
+      "path": "src/assets/fonts/Mulish-SemiBold.ttf",
+      "sha1": "0935586660615fe1c41fc1bc8aa3a5e0c8c744a8"
+    },
+    {
+      "path": "src/assets/fonts/SVN-Gilroy.otf",
+      "sha1": "ed7c84d6f0b3bd4764934704c927122f703f2eef"
+    },
+    {
+      "path": "src/assets/fonts/SVN-GilroyBold.otf",
+      "sha1": "c68db5b3242b9d336a295a0d986009ba0265acbc"
+    },
+    {
+      "path": "src/assets/fonts/SVN-GilroyMedium.otf",
+      "sha1": "858bfba67dcb4788dd9cdb261b707a78e2075334"
+    },
+    {
+      "path": "src/assets/fonts/SVN-GilroySemiBold.otf",
+      "sha1": "ac6180999c6054cf53128046cf29bb53c8266102"
+    }
+  ]
+}
