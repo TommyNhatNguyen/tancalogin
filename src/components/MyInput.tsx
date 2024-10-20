@@ -1,12 +1,17 @@
 import React, {LegacyRef, forwardRef} from 'react';
 import {
   Image,
+  StyleProp,
   StyleSheet,
+  StyleSheetProperties,
   TextInput,
   TextInputComponent,
   TextInputProps,
+  TextStyle,
   TouchableOpacity,
   View,
+  ViewComponent,
+  ViewStyle,
 } from 'react-native';
 import {colors} from '../styles/colorStyle';
 import {MulishFont} from '../styles/fontStyle';
@@ -15,20 +20,22 @@ const dropDownIcon = require('../assets/images/dropdown-icon.png');
 
 type MyInputType = {
   icon?: any;
-  handleChange: (text: string) => void;
+  handleChange?: (text: string) => void;
   type?: 'phone';
+  containerStyle?: ViewStyle | StyleProp<ViewStyle>;
+  inputStyle?: StyleProp<TextStyle>;
 } & TextInputProps;
 
 const MyInput = (
-  {icon, handleChange, type, ...props}: MyInputType,
+  {icon, handleChange, type, containerStyle, inputStyle, ...props}: MyInputType,
   ref: LegacyRef<TextInput>,
 ) => {
   const _onChange = (text: string) => {
-    handleChange(text);
+    if (handleChange) handleChange(text);
   };
   const _onChangePhoneReigon = () => {};
   return (
-    <View style={styles.container}>
+    <View style={StyleSheet.compose(styles.container, containerStyle)}>
       {icon && <Image source={icon} style={styles.icon} />}
       {type === 'phone' && (
         <TouchableOpacity onPress={_onChangePhoneReigon}>
@@ -45,7 +52,7 @@ const MyInput = (
       )}
       <TextInput
         placeholderTextColor={colors.placeholderColor}
-        style={styles.input}
+        style={StyleSheet.compose(styles.input, inputStyle)}
         onChangeText={_onChange}
         ref={ref}
         {...props}

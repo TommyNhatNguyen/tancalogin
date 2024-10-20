@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, TextProps, TextStyle} from 'react-native';
+import {StyleProp, StyleSheet, Text, TextProps, TextStyle} from 'react-native';
 
 type MyAppTextType = {
   fontFamily?: 'gilroy' | 'mulish';
   fontWeight?: 'regular' | 'bold' | 'medium' | 'semibold' | 'light';
   children: React.ReactNode;
-  styles?: TextStyle | TextStyle[];
+  styles?: TextStyle | TextStyle[] | StyleProp<TextStyle>;
 } & TextProps;
 
 const GilroyFont = {
@@ -44,7 +44,7 @@ const MyAppText = ({
       fontFamilyStyle = `${GILROY_FONT}${GilroyFont[fontWeight]}`;
       break;
   }
-  const styling = StyleSheet.flatten([{fontFamily: fontFamilyStyle}, styles]);
+  const styling = StyleSheet.compose({fontFamily: fontFamilyStyle}, styles);
   return (
     <Text {...props} style={styling}>
       {children}

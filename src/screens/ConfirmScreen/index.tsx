@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MyAppText from '../../components/MyAppText';
 import {
   ImageBackground,
   KeyboardAvoidingView,
   SafeAreaView,
   StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {colors} from '../../styles/colorStyle';
 import Header from '../RegisterScreen/components/Header';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
+import OTPComponent from '../../components/OTPComponent';
+import {useTimer} from '../../utils/useTimer';
 const bgImage = require('../../assets/images/bg-gradient.png');
 
 type ConfirmScreenType = {
@@ -17,10 +21,23 @@ type ConfirmScreenType = {
   route: any;
 };
 
+const OPT_LENGTH = 5;
+
 const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
+  const counter = useTimer(2);
   const {phoneNumber} = route.params;
-  console.log(phoneNumber);
-  const handleConfirm = () => {};
+  const [codes, setCodes] = useState<string[] | undefined>(
+    Array(OPT_LENGTH).fill(''),
+  );
+  const handleSetCodes = (text: string, selectIndex: number) => {
+    setCodes(prev =>
+      prev?.map((item, index) => (index === selectIndex ? text : item)),
+    );
+  };
+  const handleConfirm = () => {
+    console.log(codes);
+    console.log(phoneNumber);
+  };
   return (
     <ImageBackground
       source={bgImage}
@@ -42,9 +59,15 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
               Xác minh OTP
             </MyAppText>
             <MyAppText fontWeight="regular" styles={formStyle.welcome}>
-              Nhập mã OTP gửi đến +84336785321
+              Nhập mã OTP gửi đến {phoneNumber}
             </MyAppText>
           </View>
+
+          <OTPComponent
+            length={OPT_LENGTH}
+            handleSetCodes={handleSetCodes}
+            codes={codes}
+          />
 
           <MyTouchableOpacity
             onPress={handleConfirm}
@@ -55,7 +78,7 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
 
           <MyAppText styles={formStyle.textAzure} fontWeight="light">
             Gửi lại sau
-            <MyAppText fontWeight="medium"> (36)</MyAppText>
+            <MyAppText fontWeight="medium"> ({counter}s)</MyAppText>
           </MyAppText>
         </KeyboardAvoidingView>
       </View>
@@ -105,7 +128,23 @@ const formStyle = StyleSheet.create({
   inputContainer: {
     marginTop: 40,
     marginBottom: 29,
-    gap: 20,
+    flexDirection: 'row',
+    gap: 25,
+  },
+  input: {
+    flex: 1,
+    height: 52,
+    width: 47,
+    paddingHorizontal: 0,
+  },
+  inputFocused: {
+    borderWidth: 1,
+    borderColor: colors.mainColor,
+  },
+  inputText: {
+    fontFamily: 'SVN-GilroyBold',
+    fontSize: 20.82,
+    textAlign: 'center',
   },
   submitBtn: {
     maxHeight: 53,
