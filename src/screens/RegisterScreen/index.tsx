@@ -9,7 +9,6 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import Header from './components/Header';
 import MyAppText from '../../components/MyAppText';
 import {colors} from '../../styles/colorStyle';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
@@ -22,6 +21,8 @@ import {MESSAGE_ERROR} from '../../utils/message';
 import {PATH} from '../../constants/path';
 import {handleCheckLogin} from '../../utils/handleCheckLogin';
 import LoadingView from '../../components/LoadingView';
+import AuthHeader from '../../components/AuthHeader';
+import {fontSize} from '../../styles/fontStyle';
 const bgImage = require('../../assets/images/bg-gradient.png');
 const friendIcon = require('../../assets/images/friend-icon.png');
 
@@ -125,7 +126,7 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
       <View style={[styles.contentContainer]}>
         {/* ---- HEADER TANCA LOGO ----- */}
         <SafeAreaView style={{flex: 1}}>
-          <Header navigation={navigation} containerStyles={styles.header} />
+          <AuthHeader navigation={navigation} containerStyles={styles.header} />
         </SafeAreaView>
         {/* ---- FORM ----- */}
         <View style={{flex: 1}}></View>
@@ -213,11 +214,11 @@ const formStyle = StyleSheet.create({
     gap: 13,
   },
   title: {
-    fontSize: 23.43,
+    fontSize: fontSize.title,
     color: colors.textColor,
   },
   welcome: {
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
     color: colors.textSecondColor,
   },
   inputContainer: {
@@ -233,7 +234,7 @@ const formStyle = StyleSheet.create({
   textAzure: {
     color: colors.textColor,
     textAlign: 'center',
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
   },
 });
 export default RegisterScreen;

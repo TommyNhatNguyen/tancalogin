@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import {colors} from '../../styles/colorStyle';
-import Header from '../RegisterScreen/components/Header';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
 import OTPComponent from '../../components/OTPComponent';
 import {useTimer} from '../../utils/useTimer';
@@ -17,6 +16,8 @@ import {MESSAGE_ERROR} from '../../utils/message';
 import {tokenMethod} from '../../utils/tokenMethod';
 import {useDispatch} from 'react-redux';
 import {setUser} from '../../store/slices/authSlice';
+import AuthHeader from '../../components/AuthHeader';
+import {fontSize} from '../../styles/fontStyle';
 const bgImage = require('../../assets/images/bg-gradient.png');
 
 type ConfirmScreenType = {
@@ -67,7 +68,7 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
       <View style={[styles.contentContainer]}>
         {/* ---- HEADER TANCA LOGO ----- */}
         <SafeAreaView style={{flex: 1}}>
-          <Header navigation={navigation} containerStyles={styles.header} />
+          <AuthHeader navigation={navigation} containerStyles={styles.header} />
         </SafeAreaView>
         {/* ---- FORM ----- */}
         <View style={{flex: 1}}></View>
@@ -139,11 +140,11 @@ const formStyle = StyleSheet.create({
     gap: 13,
   },
   title: {
-    fontSize: 23.43,
+    fontSize: fontSize.title,
     color: colors.textColor,
   },
   welcome: {
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
     color: colors.textSecondColor,
   },
   inputContainer: {
@@ -164,7 +165,7 @@ const formStyle = StyleSheet.create({
   },
   inputText: {
     fontFamily: 'SVN-GilroyBold',
-    fontSize: 20.82,
+    fontSize: fontSize.titleSmall,
     textAlign: 'center',
   },
   submitBtn: {
@@ -175,7 +176,7 @@ const formStyle = StyleSheet.create({
   textAzure: {
     color: colors.textColor,
     textAlign: 'center',
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
   },
 });
 

@@ -2,17 +2,18 @@ import React from 'react';
 import {
   StyleProp,
   StyleSheet,
+  Touchable,
   TouchableOpacity,
   TouchableOpacityProps,
-  useWindowDimensions,
 } from 'react-native';
 import {colors} from '../styles/colorStyle';
 import MyAppText from './MyAppText';
+import {fontSize} from '../styles/fontStyle';
 
 type MyTouchableOpacityType = {
   children: React.ReactNode;
   style?: StyleProp<any>;
-  textStyle?: StyleProp<any>;
+  textStyle?: StyleProp<Text>;
   variant?: 'border' | 'fill';
 } & TouchableOpacityProps;
 
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    fontSize: 18.51,
+    fontSize: fontSize.text,
   },
   btnBorder: {
     borderWidth: 1,
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     borderColor: colors.mainColor,
   },
   textBtn: {
-    fontSize: 18.51,
+    fontSize: fontSize.text,
   },
   textBtnBorder: {
     color: colors.mainColor,

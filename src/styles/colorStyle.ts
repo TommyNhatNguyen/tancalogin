@@ -7,4 +7,5 @@ export const colors = {
   inputBgColor: '#F2F7FF',
   placeholderColor: '#DCE7F9',
   whiteColor: '#ffff',
+  redColor: '#FF0000',
 };

@@ -3,18 +3,16 @@ import {
   Image,
   StyleProp,
   StyleSheet,
-  StyleSheetProperties,
   TextInput,
-  TextInputComponent,
   TextInputProps,
   TextStyle,
   TouchableOpacity,
+  TouchableOpacityProps,
   View,
-  ViewComponent,
   ViewStyle,
 } from 'react-native';
 import {colors} from '../styles/colorStyle';
-import {MulishFont} from '../styles/fontStyle';
+import {MulishFont, fontSize} from '../styles/fontStyle';
 import MyAppText from './MyAppText';
 const dropDownIcon = require('../assets/images/dropdown-icon.png');
 
@@ -25,7 +23,7 @@ type MyInputType = {
   containerStyle?: ViewStyle | StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
   error?: any;
-} & TextInputProps;
+} & (TextInputProps & TouchableOpacityProps);
 
 const MyInput = (
   {
@@ -42,7 +40,6 @@ const MyInput = (
   const _onChange = (text: string) => {
     if (handleChange) handleChange(text);
   };
-  const _onChangePhoneReigon = () => {};
   return (
     <View
       style={[
@@ -51,7 +48,7 @@ const MyInput = (
       ]}>
       {icon && <Image source={icon} style={styles.icon} />}
       {type === 'phone' && (
-        <TouchableOpacity onPress={_onChangePhoneReigon}>
+        <TouchableOpacity {...props}>
           <View style={styles.phoneDropDown}>
             <MyAppText
               fontFamily="mulish"
@@ -88,7 +85,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     fontFamily: MulishFont.medium,
-    fontSize: 18.51,
+    fontSize: fontSize.text,
     color: colors.textColor,
   },
   icon: {
@@ -107,7 +104,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   phoneDropDownText: {
-    fontSize: 18.51,
+    fontSize: fontSize.text,
     color: colors.textColor,
   },
   dropDownIcon: {
@@ -115,7 +112,7 @@ const styles = StyleSheet.create({
     height: 14,
     objectFit: 'contain',
   },
-  error: {borderWidth: 1, borderColor: 'red'},
+  error: {borderWidth: 1, borderColor: colors.redColor},
 });
 
 export default forwardRef(MyInput);

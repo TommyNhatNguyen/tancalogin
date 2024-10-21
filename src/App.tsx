@@ -6,7 +6,6 @@ import RegisterScreen from './screens/RegisterScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SplashScreen from './screens/SplashScreen';
 import {PATH} from './constants/path';
-
 import ConfirmScreen from './screens/ConfirmScreen';
 import {useSelector} from 'react-redux';
 import {RootState, useAppDispatch} from './store/store';
@@ -51,7 +50,13 @@ function App(): React.JSX.Element {
           screenOptions={{headerShown: false}}>
           {!isLogin && !loading ? (
             <>
-              <Stack.Screen name={PATH.WELCOME} component={WelcomeScreen} />
+              <Stack.Screen
+                name={PATH.WELCOME}
+                component={WelcomeScreen}
+                options={{
+                  animationTypeForReplace: isLogin ? 'push' : 'pop',
+                }}
+              />
               <Stack.Screen name={PATH.LOGIN} component={LoginScreen} />
               <Stack.Screen name={PATH.REGISTER} component={RegisterScreen} />
               <Stack.Screen name={PATH.OTP} component={ConfirmScreen} />

@@ -4,13 +4,11 @@ import MyAppText from '../../components/MyAppText';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
 import {logoutUser} from '../../store/slices/authSlice';
 import {useAppDispatch} from '../../store/store';
-import {tokenMethod} from '../../utils/tokenMethod';
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
   const _onPress = async () => {
     dispatch(logoutUser({}));
-    console.log(await tokenMethod.getData());
   };
   return (
     <View>

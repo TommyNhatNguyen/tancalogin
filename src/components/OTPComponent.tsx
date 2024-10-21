@@ -2,6 +2,7 @@ import React, {RefObject, useRef, useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {colors} from '../styles/colorStyle';
 import MyInput from './MyInput';
+import {fontSize} from '../styles/fontStyle';
 
 type OTPComponentType = {
   codes: string[] | undefined;
@@ -99,7 +100,7 @@ const formStyle = StyleSheet.create({
   },
   inputText: {
     fontFamily: 'SVN-GilroyBold',
-    fontSize: 20.82,
+    fontSize: fontSize.titleSmall,
     textAlign: 'center',
   },
 });

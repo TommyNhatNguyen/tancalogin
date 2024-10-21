@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {
   Alert,
-  Image,
   ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
@@ -16,11 +15,11 @@ import MyInput from '../../components/MyInput';
 import {MESSAGE_ERROR} from '../../utils/message';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
 import {validateVietNamPhoneNumber} from '../../utils/validation';
-import Header from '../RegisterScreen/components/Header';
 import {PATH} from '../../constants/path';
-import {authServices} from '../../services/authServices';
 import LoadingView from '../../components/LoadingView';
 import {handleCheckLogin} from '../../utils/handleCheckLogin';
+import AuthHeader from '../../components/AuthHeader';
+import {fontSize} from '../../styles/fontStyle';
 const bgImage = require('../../assets/images/bg-gradient.png');
 
 type LoginScreenType = {
@@ -105,7 +104,7 @@ const LoginScreen = ({navigation}: LoginScreenType) => {
       <View style={styles.contentContainer}>
         {/* ---- HEADER TANCA LOGO ----- */}
         <SafeAreaView style={{flex: 1}}>
-          <Header navigation={navigation} containerStyles={styles.header} />
+          <AuthHeader navigation={navigation} containerStyles={styles.header} />
         </SafeAreaView>
         {/* ---- FORM ----- */}
         <View style={{flex: 1}}></View>
@@ -186,11 +185,11 @@ const formStyle = StyleSheet.create({
     gap: 13,
   },
   title: {
-    fontSize: 23.43,
+    fontSize: fontSize.title,
     color: colors.textColor,
   },
   welcome: {
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
     color: colors.textSecondColor,
   },
   inputContainer: {
@@ -206,7 +205,7 @@ const formStyle = StyleSheet.create({
   textAzure: {
     color: colors.textColor,
     textAlign: 'center',
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
   },
 });
 export default LoginScreen;

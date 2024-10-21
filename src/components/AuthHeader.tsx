@@ -7,17 +7,21 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
-import {PATH} from '../../../constants/path';
-const logo = require('../../../assets/images/logo.png');
-const exitIcon = require('../../../assets/images/exit-icon.png');
-const dropDownIcon = require('../../../assets/images/dropdown-icon.png');
-const flagIcon = require('../../../assets/images/flag-icon.png');
-type HeaderType = {
+import {PATH} from '../constants/path';
+const logo = require('../assets/images/logo.png');
+const exitIcon = require('../assets/images/exit-icon.png');
+const dropDownIcon = require('../assets/images/dropdown-icon.png');
+const flagIcon = require('../assets/images/flag-icon.png');
+type AuthHeaderType = {
   containerStyles?: ViewStyle;
   navigation: any;
 } & ViewProps;
 
-const Header = ({containerStyles, navigation, ...props}: HeaderType) => {
+const AuthHeader = ({
+  containerStyles,
+  navigation,
+  ...props
+}: AuthHeaderType) => {
   const _onExit = () => {
     navigation.navigate(PATH.WELCOME);
   };
@@ -80,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+export default AuthHeader;

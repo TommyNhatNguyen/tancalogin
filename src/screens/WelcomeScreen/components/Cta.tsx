@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import MyTouchableOpacity from '../../../components/MyTouchableOpacity';
 import MyAppText from '../../../components/MyAppText';
 import {colors} from '../../../styles/colorStyle';
+import {fontSize} from '../../../styles/fontStyle';
 
 type CtaType = {
   handleLogin: () => void;
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   textAzure: {
     color: colors.textColor,
     textAlign: 'center',
-    fontSize: 16.45,
+    fontSize: fontSize.textSmall,
   },
 });
 

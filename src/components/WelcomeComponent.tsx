@@ -3,6 +3,7 @@ import {Image, StyleSheet, View, useWindowDimensions} from 'react-native';
 import MyAppText from './MyAppText';
 import {colors} from '../styles/colorStyle';
 import {WelcomeDataType} from '../types/WelcomeDataType';
+import {fontSize} from '../styles/fontStyle';
 
 type WelcomeComponentType = WelcomeDataType;
 
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   },
   welcomeViewText: {
     color: colors.textColor,
-    fontSize: 23.43,
+    fontSize: fontSize.title,
     textAlign: 'center',
   },
 });
