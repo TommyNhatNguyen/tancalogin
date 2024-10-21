@@ -24,10 +24,19 @@ type MyInputType = {
   type?: 'phone';
   containerStyle?: ViewStyle | StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
+  error?: any;
 } & TextInputProps;
 
 const MyInput = (
-  {icon, handleChange, type, containerStyle, inputStyle, ...props}: MyInputType,
+  {
+    icon,
+    handleChange,
+    type,
+    containerStyle,
+    inputStyle,
+    error,
+    ...props
+  }: MyInputType,
   ref: LegacyRef<TextInput>,
 ) => {
   const _onChange = (text: string) => {
@@ -35,7 +44,11 @@ const MyInput = (
   };
   const _onChangePhoneReigon = () => {};
   return (
-    <View style={StyleSheet.compose(styles.container, containerStyle)}>
+    <View
+      style={[
+        StyleSheet.compose(styles.container, containerStyle),
+        error && styles.error,
+      ]}>
       {icon && <Image source={icon} style={styles.icon} />}
       {type === 'phone' && (
         <TouchableOpacity onPress={_onChangePhoneReigon}>
@@ -102,6 +115,7 @@ const styles = StyleSheet.create({
     height: 14,
     objectFit: 'contain',
   },
+  error: {borderWidth: 1, borderColor: 'red'},
 });
 
 export default forwardRef(MyInput);

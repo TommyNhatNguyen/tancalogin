@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {
   Alert,
+  Image,
   ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
@@ -17,6 +18,9 @@ import MyTouchableOpacity from '../../components/MyTouchableOpacity';
 import {validateVietNamPhoneNumber} from '../../utils/validation';
 import Header from '../RegisterScreen/components/Header';
 import {PATH} from '../../constants/path';
+import {authServices} from '../../services/authServices';
+import LoadingView from '../../components/LoadingView';
+import {handleCheckLogin} from '../../utils/handleCheckLogin';
 const bgImage = require('../../assets/images/bg-gradient.png');
 
 type LoginScreenType = {
@@ -27,18 +31,48 @@ const LoginScreen = ({navigation}: LoginScreenType) => {
   const [formData, setFormData] = useState({
     phone: '',
   });
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState<any>('');
   const phoneInputRef = useRef<TextInput | null>(null);
+  //* --- Get phone number on typing ---*/
   const handleChangePhone = (phoneNum: string) => {
     if (phoneNum.length <= 11) {
       setFormData(prev => {
         return {...prev, phone: phoneNum};
       });
+      setLoginError('');
     } else {
       Alert.alert(MESSAGE_ERROR.phone.title, MESSAGE_ERROR.phone.message, [
         {text: 'Xác nhận', onPress: () => phoneInputRef.current?.clear()},
       ]);
     }
   };
+  //* --- Validate phone number to generate OTP ---*/
+  const handleValidatePhoneNumber = (phone: string) => {
+    try {
+      setLoginLoading(true);
+      handleCheckLogin(
+        phone,
+        userData => {
+          navigation.navigate(PATH.OTP, {userData: userData});
+        },
+        error => {
+          setLoginError(error);
+          Alert.alert(
+            MESSAGE_ERROR.loginError.title,
+            MESSAGE_ERROR.loginError.message,
+            [{text: 'Xác nhận', onPress: () => phoneInputRef.current?.focus()}],
+          );
+        },
+      );
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  //* --- Handle login process ---*/
   const handleLogin = () => {
     if (!formData.phone) {
       Alert.alert(
@@ -51,17 +85,16 @@ const LoginScreen = ({navigation}: LoginScreenType) => {
         {
           text: 'Xác nhận',
           onPress: () => {
-            phoneInputRef.current?.clear();
+            setFormData({phone: ''});
             phoneInputRef.current?.focus();
           },
         },
       ]);
     } else {
       // Call API
-      console.log(formData);
+      handleValidatePhoneNumber(formData.phone);
       setFormData({phone: ''});
       Keyboard.dismiss();
-      navigation.navigate(PATH.OTP, {phoneNumber: formData.phone});
     }
   };
   return (
@@ -98,6 +131,7 @@ const LoginScreen = ({navigation}: LoginScreenType) => {
               keyboardType="phone-pad"
               type="phone"
               ref={phoneInputRef}
+              error={loginError}
             />
           </View>
 
@@ -114,6 +148,8 @@ const LoginScreen = ({navigation}: LoginScreenType) => {
           </MyAppText>
         </KeyboardAvoidingView>
       </View>
+      {/* --- LOADING VIEW ---- */}
+      {loginLoading && !!!loginError && <LoadingView />}
     </ImageBackground>
   );
 };

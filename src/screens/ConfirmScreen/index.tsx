@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import MyAppText from '../../components/MyAppText';
 import {
+  Alert,
   ImageBackground,
   KeyboardAvoidingView,
   SafeAreaView,
   StyleSheet,
-  TouchableHighlight,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import {colors} from '../../styles/colorStyle';
@@ -14,6 +13,10 @@ import Header from '../RegisterScreen/components/Header';
 import MyTouchableOpacity from '../../components/MyTouchableOpacity';
 import OTPComponent from '../../components/OTPComponent';
 import {useTimer} from '../../utils/useTimer';
+import {MESSAGE_ERROR} from '../../utils/message';
+import {tokenMethod} from '../../utils/tokenMethod';
+import {useDispatch} from 'react-redux';
+import {setUser} from '../../store/slices/authSlice';
 const bgImage = require('../../assets/images/bg-gradient.png');
 
 type ConfirmScreenType = {
@@ -24,8 +27,11 @@ type ConfirmScreenType = {
 const OPT_LENGTH = 5;
 
 const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
-  const counter = useTimer(2);
-  const {phoneNumber} = route.params;
+  const counter = useTimer(36);
+  const dispatch = useDispatch();
+  const {
+    userData: {otp: confirmOtp, phone, token},
+  } = route.params;
   const [codes, setCodes] = useState<string[] | undefined>(
     Array(OPT_LENGTH).fill(''),
   );
@@ -34,10 +40,25 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
       prev?.map((item, index) => (index === selectIndex ? text : item)),
     );
   };
-  const handleConfirm = () => {
-    console.log(codes);
-    console.log(phoneNumber);
+  const handleConfirm = async () => {
+    const userOtp = codes?.join('');
+    if (userOtp === confirmOtp) {
+      tokenMethod.setData({token: token});
+      dispatch(setUser({phone}));
+    } else {
+      Alert.alert(
+        MESSAGE_ERROR.otpError.title,
+        MESSAGE_ERROR.otpError.message,
+        [
+          {
+            text: 'Xác nhận',
+            onPress: () => setCodes(Array(OPT_LENGTH).fill('')),
+          },
+        ],
+      );
+    }
   };
+
   return (
     <ImageBackground
       source={bgImage}
@@ -59,7 +80,7 @@ const ConfirmScreen = ({navigation, route}: ConfirmScreenType) => {
               Xác minh OTP
             </MyAppText>
             <MyAppText fontWeight="regular" styles={formStyle.welcome}>
-              Nhập mã OTP gửi đến {phoneNumber}
+              Nhập mã OTP gửi đến {phone}
             </MyAppText>
           </View>
 

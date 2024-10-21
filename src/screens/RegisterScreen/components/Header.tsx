@@ -19,7 +19,7 @@ type HeaderType = {
 
 const Header = ({containerStyles, navigation, ...props}: HeaderType) => {
   const _onExit = () => {
-    navigation.navigate(PATH.HOME);
+    navigation.navigate(PATH.WELCOME);
   };
   const _onDropDown = () => {};
   return (

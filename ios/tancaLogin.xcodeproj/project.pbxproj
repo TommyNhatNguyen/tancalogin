@@ -12,17 +12,17 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-tancaLogin-tancaLoginTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-tancaLogin-tancaLoginTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B4D2D650C5A99C17CD76AF69 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2580D4AEC2078A66B53D31A7 /* PrivacyInfo.xcprivacy */; };
+		18F06C13479346DB9C0FBE7D /* SVN-GilroySemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3854244F2AF04FFDAD19E489 /* SVN-GilroySemiBold.otf */; };
 		2883E280AFA44476BF9D1953 /* SVN-Gilroy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7971D12B51C477CB8A86F95 /* SVN-Gilroy.otf */; };
 		34A3FB0355D6449DB0BF3232 /* SVN-GilroyBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8FFDE579B2EA4AE3B80E3405 /* SVN-GilroyBold.otf */; };
-		A4F6FD819DC84D7F8230049D /* SVN-GilroyMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB420C8AFC6047AB950C6955 /* SVN-GilroyMedium.otf */; };
-		18F06C13479346DB9C0FBE7D /* SVN-GilroySemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3854244F2AF04FFDAD19E489 /* SVN-GilroySemiBold.otf */; };
-		C9D7CD3CD724416A802E6913 /* Mulish-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC5CB475724E43E58B742CE4 /* Mulish-Bold.ttf */; };
 		405430247FB04E7291455F0D /* Mulish-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A68364297E1143019A6428EB /* Mulish-Medium.ttf */; };
-		E6FB6FBE31B7475DAA8055A0 /* Mulish-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DE0F1038AEC4C30A4573E24 /* Mulish-Regular.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-tancaLogin-tancaLoginTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-tancaLogin-tancaLoginTests.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9967CB4D60D34299A04BC9C3 /* Mulish-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3DBD962A174FED83A58F6C /* Mulish-SemiBold.ttf */; };
+		A4F6FD819DC84D7F8230049D /* SVN-GilroyMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB420C8AFC6047AB950C6955 /* SVN-GilroyMedium.otf */; };
+		B4D2D650C5A99C17CD76AF69 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2580D4AEC2078A66B53D31A7 /* PrivacyInfo.xcprivacy */; };
+		C9D7CD3CD724416A802E6913 /* Mulish-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC5CB475724E43E58B742CE4 /* Mulish-Bold.ttf */; };
+		E6FB6FBE31B7475DAA8055A0 /* Mulish-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DE0F1038AEC4C30A4573E24 /* Mulish-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,21 +48,21 @@
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = tancaLogin/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-tancaLogin-tancaLoginTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tancaLogin-tancaLoginTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2580D4AEC2078A66B53D31A7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = tancaLogin/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		2DE0F1038AEC4C30A4573E24 /* Mulish-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mulish-Regular.ttf"; path = "../src/assets/fonts/Mulish-Regular.ttf"; sourceTree = "<group>"; };
+		3854244F2AF04FFDAD19E489 /* SVN-GilroySemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SVN-GilroySemiBold.otf"; path = "../src/assets/fonts/SVN-GilroySemiBold.otf"; sourceTree = "<group>"; };
+		3A3DBD962A174FED83A58F6C /* Mulish-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mulish-SemiBold.ttf"; path = "../src/assets/fonts/Mulish-SemiBold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-tancaLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tancaLogin.debug.xcconfig"; path = "Target Support Files/Pods-tancaLogin/Pods-tancaLogin.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-tancaLogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tancaLogin.release.xcconfig"; path = "Target Support Files/Pods-tancaLogin/Pods-tancaLogin.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-tancaLogin-tancaLoginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tancaLogin-tancaLoginTests.debug.xcconfig"; path = "Target Support Files/Pods-tancaLogin-tancaLoginTests/Pods-tancaLogin-tancaLoginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-tancaLogin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tancaLogin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = tancaLogin/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-tancaLogin-tancaLoginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tancaLogin-tancaLoginTests.release.xcconfig"; path = "Target Support Files/Pods-tancaLogin-tancaLoginTests/Pods-tancaLogin-tancaLoginTests.release.xcconfig"; sourceTree = "<group>"; };
+		8FFDE579B2EA4AE3B80E3405 /* SVN-GilroyBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SVN-GilroyBold.otf"; path = "../src/assets/fonts/SVN-GilroyBold.otf"; sourceTree = "<group>"; };
+		A68364297E1143019A6428EB /* Mulish-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mulish-Medium.ttf"; path = "../src/assets/fonts/Mulish-Medium.ttf"; sourceTree = "<group>"; };
+		AB420C8AFC6047AB950C6955 /* SVN-GilroyMedium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SVN-GilroyMedium.otf"; path = "../src/assets/fonts/SVN-GilroyMedium.otf"; sourceTree = "<group>"; };
+		B7971D12B51C477CB8A86F95 /* SVN-Gilroy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SVN-Gilroy.otf"; path = "../src/assets/fonts/SVN-Gilroy.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		B7971D12B51C477CB8A86F95 /* SVN-Gilroy.otf */ = {isa = PBXFileReference; name = "SVN-Gilroy.otf"; path = "../src/assets/fonts/SVN-Gilroy.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8FFDE579B2EA4AE3B80E3405 /* SVN-GilroyBold.otf */ = {isa = PBXFileReference; name = "SVN-GilroyBold.otf"; path = "../src/assets/fonts/SVN-GilroyBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AB420C8AFC6047AB950C6955 /* SVN-GilroyMedium.otf */ = {isa = PBXFileReference; name = "SVN-GilroyMedium.otf"; path = "../src/assets/fonts/SVN-GilroyMedium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3854244F2AF04FFDAD19E489 /* SVN-GilroySemiBold.otf */ = {isa = PBXFileReference; name = "SVN-GilroySemiBold.otf"; path = "../src/assets/fonts/SVN-GilroySemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		FC5CB475724E43E58B742CE4 /* Mulish-Bold.ttf */ = {isa = PBXFileReference; name = "Mulish-Bold.ttf"; path = "../src/assets/fonts/Mulish-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A68364297E1143019A6428EB /* Mulish-Medium.ttf */ = {isa = PBXFileReference; name = "Mulish-Medium.ttf"; path = "../src/assets/fonts/Mulish-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2DE0F1038AEC4C30A4573E24 /* Mulish-Regular.ttf */ = {isa = PBXFileReference; name = "Mulish-Regular.ttf"; path = "../src/assets/fonts/Mulish-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3A3DBD962A174FED83A58F6C /* Mulish-SemiBold.ttf */ = {isa = PBXFileReference; name = "Mulish-SemiBold.ttf"; path = "../src/assets/fonts/Mulish-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FC5CB475724E43E58B742CE4 /* Mulish-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mulish-Bold.ttf"; path = "../src/assets/fonts/Mulish-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 			sourceTree = "<group>";
 		};
 		D621B500B58746EBA8C5C5D1 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				B7971D12B51C477CB8A86F95 /* SVN-Gilroy.otf */,
 				8FFDE579B2EA4AE3B80E3405 /* SVN-GilroyBold.otf */,
@@ -183,8 +183,8 @@
 				3A3DBD962A174FED83A58F6C /* Mulish-SemiBold.ttf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
 			path = "";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 

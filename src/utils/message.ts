@@ -11,4 +11,12 @@ export const MESSAGE_ERROR = {
     title: 'Số điện thoại sai định dạng',
     message: 'Vui lòng thử lại',
   },
+  loginError: {
+    title: 'Số điện thoại không chính xác',
+    message: 'Vui lòng thử lại',
+  },
+  otpError: {
+    title: 'Mã OTP không chính xác',
+    message: 'Vui lòng thử lại',
+  },
 };

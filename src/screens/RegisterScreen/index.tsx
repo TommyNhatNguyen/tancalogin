@@ -20,6 +20,8 @@ import {
 } from '../../utils/validation';
 import {MESSAGE_ERROR} from '../../utils/message';
 import {PATH} from '../../constants/path';
+import {handleCheckLogin} from '../../utils/handleCheckLogin';
+import LoadingView from '../../components/LoadingView';
 const bgImage = require('../../assets/images/bg-gradient.png');
 const friendIcon = require('../../assets/images/friend-icon.png');
 
@@ -32,8 +34,11 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
     username: '',
     phone: '',
   });
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState<any>('');
   const userNameInputRef = useRef<TextInput | null>(null);
   const phoneInputRef = useRef<TextInput | null>(null);
+  //* --- Get user name and phone number on typing ---*/
   const handleChangeUserName = (text: string) => {
     if (validateUsername(text)) {
       setFormData(prev => {
@@ -58,6 +63,36 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
       ]);
     }
   };
+  //* --- Validate phone number to generate OTP ---*/
+  const handleValidatePhoneNumber = (phone: string) => {
+    try {
+      setLoginLoading(true);
+      handleCheckLogin(
+        phone,
+        userData => {
+          navigation.navigate(PATH.OTP, {userData: userData});
+        },
+        error => {
+          setLoginError(error);
+          Alert.alert(
+            MESSAGE_ERROR.loginError.title,
+            MESSAGE_ERROR.loginError.message,
+            [
+              {
+                text: 'Xác nhận',
+                onPress: () => phoneInputRef.current?.focus(),
+              },
+            ],
+          );
+        },
+      );
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+  //* --- Handle register process ---*/
   const handleRegister = () => {
     if (!formData.phone || !formData.username) {
       Alert.alert(
@@ -77,10 +112,9 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
       ]);
     } else {
       // Call API
-      console.log(formData);
+      handleValidatePhoneNumber(formData.phone);
       setFormData({username: '', phone: ''});
       Keyboard.dismiss();
-      navigation.navigate(PATH.OTP, {phoneNumber: formData.phone});
     }
   };
   return (
@@ -141,6 +175,8 @@ const RegisterScreen = ({navigation}: RegisterScreenType) => {
           </MyAppText>
         </KeyboardAvoidingView>
       </View>
+      {/* --- LOADING VIEW ---- */}
+      {loginLoading && !!!loginError && <LoadingView />}
     </ImageBackground>
   );
 };

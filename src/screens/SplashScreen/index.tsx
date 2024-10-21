@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {centerStyle} from '../../styles/centerStyle';
+import {colors} from '../../styles/colorStyle';
 const logo = require('../../assets/images/logo.png');
 const SplashScreen = () => {
   return (
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
   container: {
     ...centerStyle.columnCenter,
     height: '100%',
+    backgroundColor: colors.whiteColor,
   },
 });
 

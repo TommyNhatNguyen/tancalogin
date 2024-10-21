@@ -3,5 +3,6 @@ export const PATH = {
   LOADING: 'Loading',
   LOGIN: 'Login',
   REGISTER: 'Register',
+  WELCOME: 'Welcome',
   OTP: 'Otp',
 };
